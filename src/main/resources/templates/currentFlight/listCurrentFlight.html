@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>List CurrentFlight</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container" th:if="${not #lists.isEmpty(currentFlights)}">
+    <h1>Выполняемые рейсы</h1>
+    <hr>
+    <a th:href="@{listCurrentFlight/create}" class="btn btn-primary btn-md mb-3"> Добавить выполняемый рейс </a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Дата отправления</th>
+            <th>Время вылета</th>
+            <th>Статус</th>
+            <th>Кол-во пассажиров</th>
+            <th>Номер рейса</th>
+            <th>Пункт назначения</th>
+            <th>Самолёт</th>
+            <th>Взлётно-посадочная полоса</th>
+            <th>Затраты на подготовку</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="currentFlight : ${currentFlights}">
+            <td th:text="${currentFlight.depDate}"></td>
+            <td th:text="${currentFlight.flightTime}"></td>
+            <td th:text="${currentFlight.status}"></td>
+            <td th:text="${currentFlight.passengerNumbers}"></td>
+            <td th:text="${currentFlight.flight.flightNo}"></td>
+            <td th:text="${currentFlight.flight.desPlace}"></td>
+            <td th:text="${currentFlight.airplane.model}"></td>
+            <td th:text="${currentFlight.runway.runwayCode}"></td>
+            <td th:text="${currentFlight.totalCost}"></td>
+            <td><a th:href="@{'/listСurrentFlight/update/' + ${currentFlight.cfId}}" class="btn btn-primary btn-md mb-3" >Обновить</a>
+                <a th:href="@{'/listСurrentFlight/delete/' + ${currentFlight.cfId}}" class="btn btn-danger btn-md mb-3"  >Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+</div>
+<div class="container" th:if="${#lists.isEmpty(currentFlights)}">
+    <h1 class="text-danger">Список выполняемых рейсов пуст</h1>
+    <hr>
+    <a th:href="@{listCurrentFlight/create}" class="btn btn-primary btn-md mb-2"> Добавить выполняемый рейс </a>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+</div>
+</body>
+</html>

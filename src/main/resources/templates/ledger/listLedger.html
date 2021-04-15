@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>List Ledger</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container" th:if="${not #lists.isEmpty(ledgers)}">
+    <h1>Книга учёта</h1>
+    <hr>
+    <a th:href="@{listLedger/create}" class="btn btn-primary btn-md mb-3"> Добавить запись </a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Номер рейса</th>
+            <th>Контрагент</th>
+            <th>Услуга</th>
+            <th>Стоимость услуги</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ledger : ${ledgers}">
+            <td th:text="${ledger.ledgerId}"></td>
+            <td th:text="${ledger.currentFlight.flight.flightNo}"></td>
+            <td th:text="${ledger.counterparty.name}"></td>
+            <td th:text="${ledger.groundHandling.name}"></td>
+            <td th:text="${ledger.cost}"></td>
+            <td><a th:href="@{'/listLedger/update/' + ${ledger.ledgerId}}" class="btn btn-primary btn-md mb-3" >Обновить</a>
+                <a th:href="@{'/listLedger/delete/' + ${ledger.ledgerId}}" class="btn btn-danger btn-md mb-3"  >Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+</div>
+<div class="container" th:if="${#lists.isEmpty(ledgers)}">
+    <h1 class="text-danger">Книга учёта пуста</h1>
+    <hr>
+    <a th:href="@{listLedger/create}" class="btn btn-primary btn-md mb-2"> Добавить запись </a>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+</div>
+</body>
+</html>
