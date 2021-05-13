@@ -14,29 +14,23 @@
           crossorigin="anonymous">
 </head>
 <body>
-<br>
-<h1>Обновить данные взлётно-посадочной полосы</h1>
-<form action="#" method="post" th:action="@{/listRunway/update}" th:object="${runway}">
-    <table>
-        <tr>
-            <td>Код:</td>
-            <td><input readonly th:field="*{runwayCode}" type="number"></input></td>
-        </tr>
-        <tr>
-            <td>Длина:</td>
-            <td><input th:field="*{length}" type="number"></input></td>
-            <td th:errors="*{length}" th:if="${#fields.hasErrors('length')}">length Error</td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-</br>
-<a th:href="@{/listRunway}">Назад</a>
+    <div class="container">
+        <h1>Обновить взлётно-посадочную полосу</h1>
+        <hr>
+        <form method="post" action="#" th:action="@{/listRunway/update}" th:object="${runway}">
+            <div class="form-group">
+                <label >Код</label>
+                <input readonly th:field="*{runwayCode}" class="form-control mb-2 col-2" style="width:200px" type="number">
+            </div>
+            <div class="form-group">
+                <label >Длина</label>
+                <input th:field="*{length}" class="form-control mb-2 col-2" style="width:200px" type="number">
+                <span th:errors="*{length}" class="text-danger" th:if="${#fields.hasErrors('length')}">length Error</span>
+            </div>
+            <button type="submit" class="btn btn-success btn-md" >Внести данные</button>
+        </form>
+        <hr>
+        <a th:href="@{/listRunway}" class="btn btn-primary btn-sm" >Назад</a>
+    </div>
 </body>
 </html>

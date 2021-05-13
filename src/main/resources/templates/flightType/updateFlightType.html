@@ -14,30 +14,23 @@
           crossorigin="anonymous">
 </head>
 <body>
-<br>
-<h1>Обновить типы рейсов</h1>
-<form action="#" method="post" th:action="@{/listFlightType/update}" th:object="${flightType}">
-    <table>
-        <tr>
-            <td>Код типа рейса:</td>
-            <td><input readonly th:field="*{ftCode}" type="number"></input></td>
-            <td th:errors="*{ftCode}" th:if="${#fields.hasErrors('ftCode')}">ftCode Error</td>
-        </tr>
-        <tr>
-            <td>Наименование:</td>
-            <td><input th:field="*{name}" type="text"></input></td>
-            <td th:errors="*{name}" th:if="${#fields.hasErrors('name')}">name Error</td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-</br>
-<a th:href="@{/listFlightType}">Назад</a>
+<div class="container">
+    <h1>Обновить тип рейса</h1>
+    <hr>
+    <form method="post" action="#" th:action="@{/listFlightType/update}" th:object="${flightType}">
+        <div class="form-group">
+            <label >Код</label>
+            <input readonly th:field="*{ftCode}" class="form-control mb-4 col-4" style="width:200px" type="number">
+        </div>
+        <div class="form-group">
+            <label >Название</label>
+            <input th:field="*{name}" class="form-control mb-4 col-4" style="width:200px" type="text">
+            <span th:errors="*{name}" class="text-danger" th:if="${#fields.hasErrors('name')}">name Error</span>
+        </div>
+        <button type="submit" class="btn btn-success btn-md" >Подтвердить</button>
+    </form>
+    <hr>
+    <a th:href="@{/listFlightType}" class="btn btn-primary btn-sm" >Назад</a>
+</div>
 </body>
 </html>

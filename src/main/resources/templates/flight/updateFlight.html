@@ -14,61 +14,54 @@
           crossorigin="anonymous">
 </head>
 <body>
-<br>
-<h1>Обновить рейсы</h1>
-<form action="#" method="post" th:action="@{/listFlight/update}" th:object="${flight}">
-    <table>
-        <tr>
-            <td>Номер рейса:</td>
-            <td><input th:field="*{flightNo}" type="text"></input></td>
-            <td th:errors="*{flightNo}" th:if="${#fields.hasErrors('flightNo')}">flightNo Error</td>
-        </tr>
-        <tr>
-            <td>Пункт отправления:</td>
-            <td><input th:field="*{depPlace}" type="text"></input></td>
-            <td th:errors="*{depPlace}" th:if="${#fields.hasErrors('depPlace')}">depPlace Error</td>
-        </tr>
-        <tr>
-            <td>Пункт назначения:</td>
-            <td><input th:field="*{desPlace}" type="text"></input></td>
-            <td th:errors="*{desPlace}" th:if="${#fields.hasErrors('desPlace')}">desPlace Error</td>
-        </tr>
-        <tr>
-            <td>Регулярность:</td>
-            <td><input th:field="*{regul}" type="text"></input></td>
-            <td th:errors="*{regul}" th:if="${#fields.hasErrors('regul')}">regul Error</td>
-        </tr>
-        <tr>
-            <td>Время отправления:</td>
-            <td><input th:field="*{depTime}" type="time"></input></td>
-            <td th:errors="*{depTime}" th:if="${#fields.hasErrors('depTime')}">depTime Error</td>
-        </tr>
-        <tr>
-            <td>Тип рейса</td>
-            <td><select th:field="*{flightType.ftCode}">
-                <option th:each="flightType : ${flightTypes}"
-                        th:value="${flightType.ftCode}"
-                        th:text="${flightType.name}"></option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Авиакомпания</td>
-            <td><select th:field="*{airline.airlineCode}">
-                <option th:each="airline : ${airlines}"
-                        th:value="${airline.airlineCode}"
-                        th:text="${airline.name}"></option>
-            </select></td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-</br>
-<a th:href="@{/listFlight}">Назад</a>
+    <div class="container">
+        <h1>Обновить рейс</h1>
+        <hr>
+        <form method="post" action="#" th:action="@{/listFlight/update}" th:object="${flight}">
+            <div class="form-group">
+                <label >Номер рейса</label>
+                <input readonly th:field="*{flightNo}" class="form-control mb-2 col-2" style="width:200px" type="text">
+            </div>
+            <div class="form-group">
+                <label >Пункт отправления</label>
+                <input th:field="*{depPlace}" class="form-control mb-2 col-2" style="width:200px" type="text">
+                <span th:errors="*{depPlace}" class="text-danger" th:if="${#fields.hasErrors('depPlace')}">depPlace Error</span>
+            </div>
+            <div class="form-group">
+                <label >Пункт назначения</label>
+                <input th:field="*{desPlace}" class="form-control mb-2 col-2" style="width:200px" type="text">
+                <span th:errors="*{desPlace}" class="text-danger" th:if="${#fields.hasErrors('desPlace')}">desPlace Error</span>
+            </div>
+            <div class="form-group">
+                <label >Регулярность</label>
+                <input th:field="*{regul}" class="form-control mb-2 col-2" style="width:200px" type="text">
+                <span th:errors="*{regul}" class="text-danger" th:if="${#fields.hasErrors('regul')}">regul Error</span>
+            </div>
+            <div class="form-group">
+                <label >Время отправления</label>
+                <input th:field="*{depTime}" class="form-control mb-2 col-2" style="width:200px" type="time">
+                <span th:errors="*{depTime}" class="text-danger" th:if="${#fields.hasErrors('depTime')}">depTime Error</span>
+            </div>
+            <div class="form-group">
+                <label >Тип рейса</label>
+                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{flightType.ftCode}">
+                    <option th:each="flightType : ${flightTypes}"
+                            th:value="${flightType.ftCode}"
+                            th:text="${flightType.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Авиакомпания</label>
+                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{airline.airlineCode}">
+                    <option th:each="airline : ${airlines}"
+                            th:value="${airline.airlineCode}"
+                            th:text="${airline.name}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success btn-md" >Внести данные</button>
+        </form>
+        <hr>
+        <a th:href="@{/listFlight}" class="btn btn-primary btn-sm" >Назад</a>
+    </div>
 </body>
 </html>

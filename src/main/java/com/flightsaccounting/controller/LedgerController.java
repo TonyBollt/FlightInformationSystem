@@ -1,12 +1,16 @@
 package com.flightsaccounting.controller;
 
 import com.flightsaccounting.entity.Ledger;
-import com.flightsaccounting.service.*;
+import com.flightsaccounting.service.CounterpartyService;
+import com.flightsaccounting.service.CurrentFlightService;
+import com.flightsaccounting.service.GroundHandlingService;
+import com.flightsaccounting.service.LedgerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -59,7 +63,7 @@ public class LedgerController {
     }
 
     @PostMapping("/listLedger/update")
-    public String processUpdateForm(@Valid Ledger ledger, BindingResult bindingResult) {
+    public String processUpdateForm(@Valid @ModelAttribute("ledger") Ledger ledger, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "ledger/updateLedger";

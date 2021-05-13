@@ -16,7 +16,6 @@ import java.util.Optional;
 @Controller
 @AllArgsConstructor
 public class FlightController {
-
     private final FlightService flightService;
     private final FlightTypeService flightTypeService;
     private final AirlineService airlineService;
@@ -32,12 +31,13 @@ public class FlightController {
 
     @PostMapping("/listFlight/create")
     public String processCreationForm(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return "flight/createFlight";
         }
 
         flightService.createFlight(flight);
-        return "redirect:/listFlight/list";
+        return "redirect:/listFlight";
     }
 
     @GetMapping("/listFlight")
@@ -66,7 +66,7 @@ public class FlightController {
         return "redirect:/listFlight";
     }
 
-    @DeleteMapping("/index/indexFlight/delete/{flightNo}")
+    @GetMapping("/listFlight/delete/{flightNo}")
     public String deleteFlight(@PathVariable("flightNo") String flightNo) {
         flightService.deleteFlightById(flightNo);
         return "redirect:/listFlight";

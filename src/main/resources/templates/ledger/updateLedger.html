@@ -14,57 +14,43 @@
           crossorigin="anonymous">
 </head>
 <body>
-<br>
-<div align="center">
-    <h1>Обновить запись</h1>
-</div>
-
-<form action="#" method="post" th:action="@{/listLedger/update}" th:object="${ledger}">
-    <table>
-        <tr>
-            <td>Id:</td>
-            <td><input readonly th:field="*{ledgerId}" type="text"></input></td>
-            <td th:errors="*{ledgerId}" th:if="${#fields.hasErrors('ledgerId')}">ledgerId Error</td>
-        </tr>
-        <tr>
-            <td>Номер рейса</td>
-            <td><select th:field="*{currentFlight.cfId}">
-                <option th:each="currentFlight : ${currentFlights}"
-                        th:value="${currentFlight.cfId}"
-                        th:text="${currentFlight.flight.flightNo}"></option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Контрагент</td>
-            <td><select th:field="*{counterparty.cpCode}">
-                <option th:each="counterparty : ${counterparties}"
-                        th:value="${counterparty.cpCode}"
-                        th:text="${counterparty.name}"></option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Наземное обслуживание</td>
-            <td><select th:field="*{groundHandling.ghCode}">
-                <option th:each="groundHandling : ${groundHandlings}"
-                        th:value="${groundHandling.ghCode}"
-                        th:text="${groundHandling.name}"></option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Стоимость услуги:</td>
-            <td><input th:field="*{cost}" type="number"></input></td>
-            <td th:errors="*{cost}" th:if="${#fields.hasErrors('cost')}">cost Error</td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-</br>
-<a th:href="@{/listLedger}">Назад</a>
+    <div class="container">
+        <h1>Обновление записи</h1>
+        <hr>
+        <form method="post" action="#" th:action="@{/listLedger/update}" th:object="${ledger}">
+            <div class="form-group">
+                <label >Номер рейса</label>
+                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{currentFlight.cfId}">
+                    <option th:each="currentFlight : ${currentFlights}"
+                            th:value="${currentFlight.cfId}"
+                            th:text="${currentFlight.flight.flightNo}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Контрагент</label>
+                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{counterparty.cpCode}">
+                    <option th:each="counterparty : ${counterparties}"
+                            th:value="${counterparty.cpCode}"
+                            th:text="${counterparty.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Услуга</label>
+                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{groundHandling.ghCode}">
+                    <option th:each="groundHandling : ${groundHandlings}"
+                            th:value="${groundHandling.ghCode}"
+                            th:text="${groundHandling.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Стоимость услуги</label>
+                <input th:field="*{cost}" class="form-control mb-2 col-2" style="width:200px" type="number">
+                <span th:errors="*{cost}" class="text-danger" th:if="${#fields.hasErrors('cost')}">cost Error</span>
+            </div>
+            <button type="submit" class="btn btn-success btn-md" >Подтвердить</button>
+        </form>
+        <hr>
+        <a th:href="@{/listLedger}" class="btn btn-primary btn-sm" >Назад</a>
+    </div>
 </body>
 </html>

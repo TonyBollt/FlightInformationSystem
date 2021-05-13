@@ -1,29 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <title>Flights Accounting</title>
-    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous">
 </head>
 <body>
-<h1>Учёт выполненных авиарейсов</h1>
-<a th:href="@{/listAirline}">Авиакомпании</a>
-</br>
-<a th:href="@{/listAirplane}">Самолёты</a>
-</br>
-<a th:href="@{/listFlightType}">Типы рейсов</a>
-</br>
-<a th:href="@{/listFlight}">Рейсы</a>
-</br>
-<a th:href="@{/listRunway}">Взлётно-посадочные полосы</a>
-</br>
-<a th:href="@{/listCurrentFlight}">Выполняемые рейсы</a>
-</br>
-<a th:href="@{/listCounterparty}">Контрагенты</a>
-</br>
-<a th:href="@{/listGroundHandling}">Наземное обслуживание</a>
-</br>
-<a th:href="@{/listLedger}">Книга учёта</a>
-</br>
+    <h1>Учёт выполненных авиарейсов</h1>
+    <a th:href="@{/listAirline}" class="btn btn-primary btn-md mb-3"><img src="https://www.lufthansa.com/content/dam/lh/images/pixels_variations/c-1544782387-3806504.jpg.transform/lh-dcep-transform-width-1440/img.jpg"></a>
+    </br>
+    <a th:href="@{/listAirplane}">Самолёт</a>
+    </br>
+    <a th:href="@{/listFlightType}">Тип рейса</a>
+    </br>
+    <a th:href="@{/listFlight}">Рейс</a>
+    </br>
+    <a th:href="@{/listRunway}">Взлётно-посадочная полоса</a>
+    </br>
+    <a th:href="@{/listCurrentFlight}">Выполняемый рейс</a>
+    </br>
+    <a th:href="@{/listCounterparty}">Контрагенты</a>
+    </br>
+    <a th:href="@{/listGroundHandling}">Наземное обслуживание</a>
+    </br>
+    <a th:href="@{/listLedger}">Книга учёта</a>
+    </br>
 </body>
 </html>

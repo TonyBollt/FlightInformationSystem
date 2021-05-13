@@ -14,36 +14,28 @@
           crossorigin="anonymous">
 </head>
 <body>
-<br>
-
-<h1>Обновить данные контрагента</h1>
-
-<form action="#" method="post" th:action="@{/listCounterparty/update}" th:object="${counterparty}">
-    <table>
-        <tr>
-            <td>Код:</td>
-            <td><input readonly th:field="*{cpCode}" type="number"></input></td>
-        </tr>
-        <tr>
-            <td>Название:</td>
-            <td><input th:field="*{name}" type="text"></input></td>
-            <td th:errors="*{name}" th:if="${#fields.hasErrors('name')}">name Error</td>
-        </tr>
-        <tr>
-            <td>Адрес:</td>
-            <td><input th:field="*{address}" type="text"></input></td>
-            <td th:errors="*{address}" th:if="${#fields.hasErrors('address')}">address Error</td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-</br>
-<a th:href="@{/listCounterparty}">Назад</a>
+    <div class="container">
+        <h1>Обновить контрагента</h1>
+        <hr>
+        <form method="post" action="#" th:action="@{/listCounterparty/update}" th:object="${counterparty}">
+            <div class="form-group">
+                <label >Код</label>
+                <input readonly th:field="*{cpCode}" class="form-control mb-2 col-2" style="width:200px" type="number">
+            </div>
+            <div class="form-group">
+                <label >Название</label>
+                <input th:field="*{name}" class="form-control mb-2 col-2" style="width:200px" type="text">
+                <span th:errors="*{name}" class="text-danger" th:if="${#fields.hasErrors('name')}">name Error</span>
+            </div>
+            <div class="form-group">
+                <label >Адрес</label>
+                <input th:field="*{address}" class="form-control mb-2 col-2" style="width:200px" type="text">
+                <span th:errors="*{address}" class="text-danger" th:if="${#fields.hasErrors('address')}">address Error</span>
+            </div>
+            <button type="submit" class="btn btn-success btn-md" >Внести данные</button>
+        </form>
+        <hr>
+        <a th:href="@{/listCounterparty}" class="btn btn-primary btn-sm" >Назад</a>
+    </div>
 </body>
 </html>

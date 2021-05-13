@@ -56,6 +56,9 @@ public class CurrentFlightController {
     public String showUpdateForm(@PathVariable("cfId") Integer cfId, Model model) {
         Optional<CurrentFlight> currentFlight = currentFlightService.findCurrentFlightById(cfId);
         model.addAttribute("currentFlight", currentFlight);
+        model.addAttribute("flights", flightService.findAll());
+        model.addAttribute("airplanes", airplaneService.findAll());
+        model.addAttribute("runways", runwayService.findAll());
         return "currentFlight/updateCurrentFlight";
     }
 

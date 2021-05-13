@@ -14,39 +14,39 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div class="container" th:if="${not #lists.isEmpty(airplanes)}">
-    <h1>Список самолётов</h1>
-    <hr>
-    <a th:href="@{listAirplane/create}" class="btn btn-primary btn-md mb-3"> Добавить самолёт </a>
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Бортовой номер</th>
-                <th>Модель</th>
-                <th>Авиакомпания</th>
-                <th>Действия</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr th:each="airplane : ${airplanes}">
-                    <td th:text="${airplane.tailNumber}"></td>
-                    <td th:text="${airplane.model}"></td>
-                    <td th:text="${airplane.airline.name}"></td>
-                    <td><a th:href="@{'/listAirplane/update/' + ${airplane.tailNumber}}" class="btn btn-primary btn-md mb-3" >Обновить</a>
-                        <a th:href="@{'/listAirplane/delete/' + ${airplane.tailNumber}}" class="btn btn-danger btn-md mb-3"  >Удалить</a>
-                    </td>
+    <div class="container" th:if="${not #lists.isEmpty(airplanes)}">
+        <h1>Список самолётов</h1>
+        <hr>
+        <a th:href="@{listAirplane/create}" class="btn btn-primary btn-md mb-3"> Добавить самолёт </a>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Бортовой номер</th>
+                    <th>Модель</th>
+                    <th>Авиакомпания</th>
+                    <th>Действия</th>
                 </tr>
-        </tbody>
-    </table>
-    <hr>
-    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
-</div>
-<div class="container" th:if="${#lists.isEmpty(airplanes)}">
-    <h1 class="text-danger">Список самолётов пуст</h1>
-    <hr>
-    <a th:href="@{listAirplane/create}" class="btn btn-primary btn-md mb-2"> Добавить самолёт </a>
-    <hr>
-    <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
-</div>
+            </thead>
+            <tbody>
+                    <tr th:each="airplane : ${airplanes}">
+                        <td th:text="${airplane.tailNumber}"></td>
+                        <td th:text="${airplane.model}"></td>
+                        <td th:text="${airplane.airline.name}"></td>
+                        <td><a th:href="@{'/listAirplane/update/' + ${airplane.tailNumber}}" class="btn btn-primary btn-md mb-3" >Обновить</a>
+                            <a th:href="@{'/listAirplane/delete/' + ${airplane.tailNumber}}" class="btn btn-danger btn-md mb-3"  >Удалить</a>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <hr>
+        <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+    </div>
+    <div class="container" th:if="${#lists.isEmpty(airplanes)}">
+        <h1 class="text-danger">Список самолётов пуст</h1>
+        <hr>
+        <a th:href="@{listAirplane/create}" class="btn btn-primary btn-md mb-2"> Добавить самолёт </a>
+        <hr>
+        <a th:href="@{/}" class="btn btn-primary btn-sm mb-2" >Назад</a>
+    </div>
 </body>
 </html>

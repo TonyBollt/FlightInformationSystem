@@ -18,11 +18,11 @@
         <h1>Добавить выполняемый рейс</h1>
         <hr>
         <form method="post" action="#" th:action="@{/listCurrentFlight/create}" th:object="${currentFlight}">
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label >Id</label>
                 <input th:field="*{cfId}" class="form-control mb-2 col-2" style="width:200px" type="number">
                 <span th:errors="*{cfId}" class="text-danger" th:if="${#fields.hasErrors('cfId')}">cfId Error</span>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label >Дата отправления</label>
                 <input th:field="*{depDate}" class="form-control mb-2 col-2" style="width:200px" type="date">
@@ -37,7 +37,7 @@
                 <label >Статус</label>
                 <select class="form-control mb-2 col-2" style="width:200px" th:field="*{status}">
                     <li><a status="_show" href="#">Упал</a></li>
-                    <li><a status="_show" href="#">В</a></li>
+                    <li><a status="_show" href="#">Взорвался</a></li>
                 </select>
             </div>
             <div class="form-group">
@@ -74,11 +74,7 @@
                             th:text="${runway.runwayCode}"></option>
                 </select>
             </div>
-            <div class="form-group">
-                <label >Затраты на подготовку</label>
-                <input readonly th:field="*{totalCost}" class="form-control mb-2 col-2" style="width:200px" type="number">
-                <span th:errors="*{totalCost}" class="text-danger" th:if="${#fields.hasErrors('totalCost')}">totalCost Error</span>
-            </div>
+
             <button type="submit" class="btn btn-success btn-md" >Внести данные</button>
         </form>
         <hr>
