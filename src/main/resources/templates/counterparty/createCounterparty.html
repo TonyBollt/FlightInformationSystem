@@ -20,7 +20,7 @@
         <form method="post" action="#" th:action="@{/listCounterparty/create}" th:object="${counterparty}">
             <div class="form-group">
                 <label >Код</label>
-                <input th:field="*{cpCode}" class="form-control mb-2 col-2" style="width:200px" type="number">
+                <input th:field="*{cpCode}" class="form-control mb-2 col-2" style="width:200px" type="number" onkeypress="return event.charCode != 45" step="1" min="0" max="1000">
                 <span th:errors="*{cpCode}" class="text-danger" th:if="${#fields.hasErrors('cpCode')}">cpCode Error</span>
             </div>
             <div class="form-group">

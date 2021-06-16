@@ -18,37 +18,9 @@
         <h1>Добавить выполняемый рейс</h1>
         <hr>
         <form method="post" action="#" th:action="@{/listCurrentFlight/create}" th:object="${currentFlight}">
-            <!--<div class="form-group">
-                <label >Id</label>
-                <input th:field="*{cfId}" class="form-control mb-2 col-2" style="width:200px" type="number">
-                <span th:errors="*{cfId}" class="text-danger" th:if="${#fields.hasErrors('cfId')}">cfId Error</span>
-            </div>-->
             <div class="form-group">
-                <label >Дата отправления</label>
-                <input th:field="*{depDate}" class="form-control mb-2 col-2" style="width:200px" type="date">
-                <span th:errors="*{depDate}" class="text-danger" th:if="${#fields.hasErrors('depDate')}">depDate Error</span>
-            </div>
-            <div class="form-group">
-                <label >Время вылета</label>
-                <input th:field="*{flightTime}" class="form-control mb-2 col-2" style="width:200px" type="time">
-                <span th:errors="*{flightTime}" class="text-danger" th:if="${#fields.hasErrors('flightTime')}">flightTime Error</span>
-            </div>
-            <div class="form-group">
-                <label >Статус</label>
-                <select class="form-control mb-2 col-2" style="width:200px" th:field="*{status}">
-                    <li><a status="_show" href="#">Упал</a></li>
-                    <li><a status="_show" href="#">Взорвался</a></li>
-                </select>
-            </div>
-            <div class="form-group">
-                <label >Статус</label>
-                <input th:field="*{status}" class="form-control mb-2 col-2" style="width:200px" type="text">
-                <span th:errors="*{status}" class="text-danger" th:if="${#fields.hasErrors('status')}">status Error</span>
-            </div>
-            <div class="form-group">
-                <label >Кол-во пассажиров</label>
-                <input th:field="*{passengerNumbers}" class="form-control mb-2 col-2" style="width:200px" type="number">
-                <span th:errors="*{passengerNumbers}" class="text-danger" th:if="${#fields.hasErrors('passengerNumbers')}">passengerNumbers Error</span>
+                <label hidden>Id</label>
+                <input hidden th:field="*{cfId}" class="form-control mb-2 col-2" style="width:200px" type="number">
             </div>
             <div class="form-group">
                 <label >Номер рейса</label>
@@ -67,6 +39,34 @@
                 </select>
             </div>
             <div class="form-group">
+                <label >Дата отправления</label>
+                <input th:field="*{depDate}" class="form-control mb-2 col-2" style="width:200px" type="date">
+                <span th:errors="*{depDate}" class="text-danger" th:if="${#fields.hasErrors('depDate')}">depDate Error</span>
+            </div>
+            <div class="form-group">
+                <label >Время вылета</label>
+                <input th:field="*{flightTime}" class="form-control mb-2 col-2" style="width:200px" type="time">
+                <span th:errors="*{flightTime}" class="text-danger" th:if="${#fields.hasErrors('flightTime')}">flightTime Error</span>
+            </div>
+            <div class="form-group">
+                <label >Статус</label>
+                <select class="form-control mb-2 col-2" style="width:200px"  th:field="*{status}">
+                    <option th:value="'Обслуживание'" th:text="Технический + ' ' + осмотр"></option>
+                    <option th:value="'Регистрация'" th:text="Регистрация"></option>
+                    <option th:value="'Идёт посадка'" th:text="Идёт + ' ' + посадка"></option>
+                    <option th:value="'Задержвается'" th:text="Задержвается"></option>
+                    <option th:value="'Отмёнен'" th:text="Отмёнен"></option>
+                    <option th:value="'Ожидает вылета'" th:text="Ожидает + ' ' + вылета"></option>
+                    <option th:value="'Вылетел с задержкой'" th:text="Вылетел + ' ' + с + ' ' + задержкой"></option>
+                    <option th:value="'Вылетел по расписанию'" th:text="Вылетел + ' ' + по + ' ' + расписанию"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Кол-во пассажиров</label>
+                <input th:field="*{passengerNumbers}" class="form-control mb-2 col-2" style="width:200px" type="number" onkeypress="return event.charCode != 45" step="1" min="0" max="1000">
+                <span th:errors="*{passengerNumbers}" class="text-danger" th:if="${#fields.hasErrors('passengerNumbers')}">passengerNumbers Error</span>
+            </div>
+            <div class="form-group">
                 <label >Взлётно-посадочная полоса</label>
                 <select class="form-control mb-2 col-2" style="width:200px" th:field="*{runway.runwayCode}">
                     <option th:each="runway : ${runways}"
@@ -74,7 +74,10 @@
                             th:text="${runway.runwayCode}"></option>
                 </select>
             </div>
-
+            <div class="form-group">
+                <label hidden>Затраты на подготовку</label>
+                <input hidden th:field="*{totalCost}" class="form-control mb-2 col-2" style="width:200px" type="number">
+            </div>
             <button type="submit" class="btn btn-success btn-md" >Внести данные</button>
         </form>
         <hr>

@@ -36,9 +36,13 @@ public class LedgerController {
     }
 
     @PostMapping("/listLedger/create")
-    public String processCreationForm(@Valid Ledger ledger, BindingResult bindingResult) {
+    public String processCreationForm(@Valid Ledger ledger, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("ledger", ledger);
+            model.addAttribute("currentFlights", currentFlightService.findAll());
+            model.addAttribute("counterparties", counterpartyService.findAll());
+            model.addAttribute("groundHandlings", groundHandlingService.findAll());
             return "ledger/createLedger";
         }
 
@@ -53,7 +57,7 @@ public class LedgerController {
     }
 
     @GetMapping("/listLedger/update/{ledgerId}")
-    public String showUpdateForm(@PathVariable("ledgerId") Integer ledgerId, Model model) {
+    public String showUpdateForm(@PathVariable(value = "ledgerId") Integer ledgerId, Model model) {
         Optional<Ledger> ledger = ledgerService.findLedgerById(ledgerId);
         model.addAttribute("ledger", ledger);
         model.addAttribute("currentFlights", currentFlightService.findAll());
@@ -63,9 +67,14 @@ public class LedgerController {
     }
 
     @PostMapping("/listLedger/update")
-    public String processUpdateForm(@Valid @ModelAttribute("ledger") Ledger ledger, BindingResult bindingResult) {
+    public String processUpdateForm(@Valid @ModelAttribute("ledger") Ledger ledger, BindingResult bindingResult,
+                                    Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("ledger", ledger);
+            model.addAttribute("currentFlights", currentFlightService.findAll());
+            model.addAttribute("counterparties", counterpartyService.findAll());
+            model.addAttribute("groundHandlings", groundHandlingService.findAll());
             return "ledger/updateLedger";
         }
 

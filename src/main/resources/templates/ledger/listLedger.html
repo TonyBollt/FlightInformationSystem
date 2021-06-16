@@ -21,7 +21,7 @@
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
             <tr>
-                <th>Id</th>
+                <th hidden>Id</th>
                 <th>Номер рейса</th>
                 <th>Контрагент</th>
                 <th>Услуга</th>
@@ -31,7 +31,7 @@
             </thead>
             <tbody>
             <tr th:each="ledger : ${ledgers}">
-                <td th:text="${ledger.ledgerId}"></td>
+                <td hidden th:text="${ledger.ledgerId}"></td>
                 <td th:text="${ledger.currentFlight.flight.flightNo}"></td>
                 <td th:text="${ledger.counterparty.name}"></td>
                 <td th:text="${ledger.groundHandling.name}"></td>

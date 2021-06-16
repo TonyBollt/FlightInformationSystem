@@ -14,24 +14,193 @@
           crossorigin="anonymous">
 </head>
 <body>
-    <h1>Учёт выполненных авиарейсов</h1>
-    <a th:href="@{/listAirline}" class="btn btn-primary btn-md mb-3"><img src="https://www.lufthansa.com/content/dam/lh/images/pixels_variations/c-1544782387-3806504.jpg.transform/lh-dcep-transform-width-1440/img.jpg"></a>
-    </br>
-    <a th:href="@{/listAirplane}">Самолёт</a>
-    </br>
-    <a th:href="@{/listFlightType}">Тип рейса</a>
-    </br>
-    <a th:href="@{/listFlight}">Рейс</a>
-    </br>
-    <a th:href="@{/listRunway}">Взлётно-посадочная полоса</a>
-    </br>
-    <a th:href="@{/listCurrentFlight}">Выполняемый рейс</a>
-    </br>
-    <a th:href="@{/listCounterparty}">Контрагенты</a>
-    </br>
-    <a th:href="@{/listGroundHandling}">Наземное обслуживание</a>
-    </br>
-    <a th:href="@{/listLedger}">Книга учёта</a>
-    </br>
+
+<main role="main">
+
+    <section class="jumbotron text-center bg-dark overflow-hidden">
+        <div class="container">
+            <h2 class="jumbotron-heading text-warning bg-dark">Учёт выполненных рейсов</h2>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-dark">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/2011.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Авиакомпания</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listAirline}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/Routes.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Рейс</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listFlight}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1934.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Тип Рейса</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listFlightType}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1963.png}"
+                                class="card-img-top"
+                                alt="">
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Самолёт</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listAirplane}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/Planes.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Выполняемый рейс</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listCurrentFlight}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1966.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Взлётно-посадочная полоса</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listRunway}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1980.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Контрагент</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listCounterparty}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1955.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Книга учёта</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listLedger}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1991.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Наземное обслуживание</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/listGroundHandling}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img
+                                th:src="@{images/1991.png}"
+                                class="card-img-top"
+                                alt=""
+                        />
+                        <div class="card-body">
+                            <h3 class="card-title text-warning">Отчёт</h3>
+                            <p class="card-text"></p>
+                            <a th:href="@{/report}" class="btn btn-primary">Просмотр</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
 </body>
 </html>

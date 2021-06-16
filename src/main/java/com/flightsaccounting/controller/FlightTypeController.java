@@ -1,6 +1,7 @@
 package com.flightsaccounting.controller;
 
 import com.flightsaccounting.entity.FlightType;
+import com.flightsaccounting.service.FlightService;
 import com.flightsaccounting.service.FlightTypeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class FlightTypeController {
 
     private final FlightTypeService flightTypeService;
+    private final FlightService flightService;
 
     @GetMapping("/listFlightType/create")
     public String showCreationForm(Model model) {

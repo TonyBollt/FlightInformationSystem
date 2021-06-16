@@ -11,6 +11,8 @@ public interface CurrentFlightService {
 
     List<CurrentFlight> findAll();
 
+    List<CurrentFlight> findAllByOrderByDepDateDesc();
+
     Optional<CurrentFlight> findCurrentFlightById(Integer cfId);
 
     void updateCurrentFlight(CurrentFlight currentFlight);

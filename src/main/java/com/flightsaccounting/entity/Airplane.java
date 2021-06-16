@@ -20,10 +20,6 @@ public class Airplane {
     @NotBlank(message = "Введите модель самолёта")
     private String model;
 
-    //@NotNull(message = "Внешний ключ авиакомпании")
-    //@Column(name = "airline_code", table = "airplane")
-    //private Integer airlineCode;
-
     @ManyToOne
     @JoinColumn(name = "airline_code") //, table = "airline", insertable = false, updatable = false
     private Airline airline;

@@ -8,7 +8,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -30,9 +33,13 @@ public class FlightController {
     }
 
     @PostMapping("/listFlight/create")
-    public String processCreationForm(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult) {
+    public String processCreationForm(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult,
+                                      Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("flight", flight);
+            model.addAttribute("flightTypes", flightTypeService.findAll());
+            model.addAttribute("airlines", airlineService.findAll());
             return "flight/createFlight";
         }
 
@@ -56,9 +63,13 @@ public class FlightController {
     }
 
     @PostMapping("/listFlight/update")
-    public String processUpdateForm(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult) {
+    public String processUpdateForm(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult,
+                                    Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("flight", flight);
+            model.addAttribute("flightTypes", flightTypeService.findAll());
+            model.addAttribute("airlines", airlineService.findAll());
             return "flight/updateFlight";
         }
 

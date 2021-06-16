@@ -33,9 +33,12 @@ public class AirplaneController {
     }
 
     @PostMapping("/listAirplane/create")
-    public String processCreationForm(@Valid @ModelAttribute("airplane") Airplane airplane, BindingResult bindingResult) {
+    public String processCreationForm(@Valid @ModelAttribute("airplane") Airplane airplane, BindingResult bindingResult,
+                                      Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("airplane", airplane);
+            model.addAttribute("airlines", airlineService.findAll());
             return "airplane/createAirplane";
         }
         airplaneService.createAirplane(airplane);
@@ -45,7 +48,6 @@ public class AirplaneController {
     @GetMapping("/listAirplane")
     public String getAirplanes(Model model) {
         model.addAttribute("airplanes", airplaneService.findAll());
-        //model.addAttribute("airlines", airlineService.findAll());
         return "airplane/listAirplane";
     }
 
@@ -59,9 +61,12 @@ public class AirplaneController {
     }
 
     @PostMapping("/listAirplane/update")
-    public String processUpdateForm(@Valid @ModelAttribute("airplane") Airplane airplane, BindingResult bindingResult) {
+    public String processUpdateForm(@Valid @ModelAttribute("airplane") Airplane airplane, BindingResult bindingResult,
+                                    Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("airplane", airplane);
+            model.addAttribute("airlines", airlineService.findAll());
             return "airplane/updateAirplane";
         }
 

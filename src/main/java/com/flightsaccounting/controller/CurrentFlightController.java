@@ -36,9 +36,14 @@ public class CurrentFlightController {
     }
 
     @PostMapping("/listCurrentFlight/create")
-    public String processCreationForm(@Valid @ModelAttribute("currentFlight") CurrentFlight currentFlight, BindingResult bindingResult) {
+    public String processCreationForm(@Valid @ModelAttribute("currentFlight") CurrentFlight currentFlight, BindingResult bindingResult,
+                                      Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("currentFlight", currentFlight);
+            model.addAttribute("flights", flightService.findAll());
+            model.addAttribute("airplanes", airplaneService.findAll());
+            model.addAttribute("runways", runwayService.findAll());
             return "currentFlight/createCurrentFlight";
         }
 
@@ -48,12 +53,13 @@ public class CurrentFlightController {
 
     @GetMapping("/listCurrentFlight")
     public String getCurrentFlights(Model model) {
-        model.addAttribute("currentFlights", currentFlightService.findAll());
+        model.addAttribute("currentFlights", currentFlightService.findAllByOrderByDepDateDesc());
+        //model.addAttribute("currentFlights", currentFlightService.findAll());
         return "currentFlight/listCurrentFlight";
     }
 
     @GetMapping("/listCurrentFlight/update/{cfId}")
-    public String showUpdateForm(@PathVariable("cfId") Integer cfId, Model model) {
+    public String showUpdateForm(@PathVariable(value = "cfId") Integer cfId, Model model) {
         Optional<CurrentFlight> currentFlight = currentFlightService.findCurrentFlightById(cfId);
         model.addAttribute("currentFlight", currentFlight);
         model.addAttribute("flights", flightService.findAll());
@@ -63,9 +69,14 @@ public class CurrentFlightController {
     }
 
     @PostMapping("/listCurrentFlight/update")
-    public String processUpdateForm(@Valid @ModelAttribute("currentFlight") CurrentFlight currentFlight, BindingResult bindingResult) {
+    public String processUpdateForm(@Valid @ModelAttribute("currentFlight") CurrentFlight currentFlight, BindingResult bindingResult,
+                                    Model model) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("currentFlight", currentFlight);
+            model.addAttribute("flights", flightService.findAll());
+            model.addAttribute("airplanes", airplaneService.findAll());
+            model.addAttribute("runways", runwayService.findAll());
             return "currentFlight/updateCurrentFlight";
         }
 

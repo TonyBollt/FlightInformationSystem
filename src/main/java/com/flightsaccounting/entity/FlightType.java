@@ -19,6 +19,4 @@ public class FlightType {
     @NotBlank(message = "Введите тип рейса")
     @Size(min = 1, max = 30, message = "Допустимое количество символов от 1 до 30")
     private String name;
-
-
 }

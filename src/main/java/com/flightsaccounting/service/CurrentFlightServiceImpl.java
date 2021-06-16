@@ -26,6 +26,10 @@ public class CurrentFlightServiceImpl implements CurrentFlightService {
         return currentFlightRepository.findAll();
     }
 
+    public List<CurrentFlight> findAllByOrderByDepDateDesc() {
+        return currentFlightRepository.findAllByOrderByDepDateDesc();
+    }
+
     @Override
     public Optional<CurrentFlight> findCurrentFlightById(Integer cfId) {
         return currentFlightRepository.findById(cfId);

@@ -10,9 +10,6 @@ import javax.validation.constraints.Size;
 
 
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 @Entity(name = "airline")
 public class Airline {
     @Id

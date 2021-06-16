@@ -42,7 +42,8 @@ public class Flight {
     @JoinColumn(name = "airline_code")
     private Airline airline;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "ft_code")
     private FlightType flightType;
+
 }

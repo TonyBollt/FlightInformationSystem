@@ -19,11 +19,6 @@ import java.util.Optional;
 public class AirlineController {
     private final AirlineService airlineService;
 
-    //@GetMapping({"/index/indexAirline"})
-    //public String indexAirline(Model model) {
-    //    return "airline/indexAirline";
-    //}
-
     @GetMapping("/listAirline/create")
     public String showCreationForm(Model model) {
         Airline airline = new Airline();
